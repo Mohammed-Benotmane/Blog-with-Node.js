@@ -25,6 +25,7 @@ fs.writeFile('./docs/test.txt','hello world',()=>{
 */
 
 // Directories
+/*
 if (!fs.existsSync('./assets')) {
     fs.mkdir('./assets', (err) => {
         if (err) {
@@ -39,4 +40,15 @@ if (!fs.existsSync('./assets')) {
         }
         console.log('dir deleted');
     });
+}
+*/
+//deleting files
+
+if(fs.existsSync("./docs/test.txt")){
+    fs.unlink("./docs/test.txt",(err)=>{
+        if(err){
+            console.log(err);
+        }
+        console.log('file deleted');
+    })
 }
