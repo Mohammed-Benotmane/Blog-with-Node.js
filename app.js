@@ -7,6 +7,19 @@ app.set('view engine','ejs');
 
 app.listen(3000);
 
+app.use((req,res,next)=>{
+    console.log('new request made:');
+    console.log('host:',req.hostname);
+    console.log('path:',req.path);
+    console.log('method:',req.method);
+    next();
+});
+
+app.use((req,res,next)=>{
+    console.log('next middleware');
+    next();
+});
+
 app.get('/', (req,res)=>{
     const blogs = [
         {title:"First Blog", snippet:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione impedit iure enim veritatis eaque excepturi! Velit veniam laboriosam impedit hic eius error placeat alias? Enim dolorum velit tempore a eligendi?"},
