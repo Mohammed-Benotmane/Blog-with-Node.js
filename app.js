@@ -8,11 +8,16 @@ app.set('view engine','ejs');
 app.listen(3000);
 
 app.get('/', (req,res)=>{
-    res.render('index',{title: 'Home'});
+    const blogs = [
+        {title:"First Blog", snippet:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione impedit iure enim veritatis eaque excepturi! Velit veniam laboriosam impedit hic eius error placeat alias? Enim dolorum velit tempore a eligendi?"},
+    {title:"Second Blog", snippet:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione impedit iure enim veritatis eaque excepturi! Velit veniam laboriosam impedit hic eius error placeat alias? Enim dolorum velit tempore a eligendi?"},
+    {title:"third Blog", snippet:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione impedit iure enim veritatis eaque excepturi! Velit veniam laboriosam impedit hic eius error placeat alias? Enim dolorum velit tempore a eligendi?"},
+    ];
+    res.render('index',{title: 'Home',blogs: blogs});
 });
 
 app.get('/about', (req,res)=>{
-    res.render('about');
+    res.render('about',{title: 'About'});
 });
 
 app.get('/about-me', (req,res)=>{
@@ -20,9 +25,9 @@ app.get('/about-me', (req,res)=>{
 });
 
 app.get('/blogs/create',(req,res)=>{
-    res.render('create');
+    res.render('create',{title: 'Create a new Blog'});
 });
 
 app.use((req,res)=>{
-    res.status(404).render('404');
+    res.status(404).render('404',{title: '404'});
 });
