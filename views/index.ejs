@@ -9,12 +9,11 @@
         <h2>All Blogs</h2>
         <% if(blogs.length > 0){ %>
         <% blogs.forEach(blog => {%>
+            <a class="single" href="/blogs/<%= blog._id %>">
         <h3 class="title"><%= blog.title %></h3>
-        <h4 class="body"> <%= blog.snippet %> </h4>
-        <p class="snippet"> <%= blog.body %> </p>
-        <br />
-        <br />
-        <br />
+        <h4 class="snippet"> <%= blog.snippet %> </h4>
+        </a>
+
         <% }) %>
 
         <% }else{ %>
