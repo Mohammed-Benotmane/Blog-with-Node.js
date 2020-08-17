@@ -1,8 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
 const { result } = require('lodash');
+const blogRoutes = require('./routes/blogRoutes');
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(express.static('public'));
 
 // get data from form
 app.use(express.urlencoded({ extended: true }));
-
+/*
 app.get('/add-blog', (req, res) => {
     const blog = new Blog({
         title: "new Blog",
@@ -37,58 +37,10 @@ app.get('/add-blog', (req, res) => {
         .then((result) => res.send(result))
         .catch((err) => console.log(err));
 });
-
+*/
 app.get('/', (req, res) => {
     res.redirect('/blogs');
 });
-
-app.get('/blogs', (req, res) => {
-    Blog.find().sort({ createdAt: -1 })
-        .then((result) => {
-            res.render('index', { blogs: result, title: 'Home' });
-        })
-        .catch((err) => console.log(err));
-});
-
-app.post('/blogs', (req, res) => {
-    const blog = new Blog(req.body);
-    blog.save()
-        .then((result) => {
-            res.redirect('blogs')
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'Create a new Blog' });
-});
-
-app.get('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findById(id)
-        .then((result) => {
-            res.render('details', { blog: result, title: 'Blog Details' })
-        })
-        .catch((err) => console.log(err));
-});
-
-app.delete('/blogs/:id',(req,res)=>{
-    const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-        .then((result)=>{
-            res.json({redirect:'/blogs'})
-        })
-        .catch((err)=>console.log(err));
-});
-
-
-app.get('/single-blog', (req, res) => {
-    Blog.findById('5f24f05369f65d2ff073142a')
-        .then((result) => res.send(result))
-        .catch((err) => console.log(err));
-})
 
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
@@ -98,7 +50,7 @@ app.get('/about-me', (req, res) => {
     res.redirect('/about');
 });
 
-
+app.use('/blogs',blogRoutes);
 
 app.use((req, res) => {
     res.status(404).render('404', { title: '404' });
