@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { result } = require('lodash');
 const blogRoutes = require('./routes/blogRoutes');
 
+
 const app = express();
 
 const dbURI = 'mongodb+srv://mohammedbenotmane:1475963mimo@nodeblog.12e5a.mongodb.net/blog?retryWrites=true&w=majority';
