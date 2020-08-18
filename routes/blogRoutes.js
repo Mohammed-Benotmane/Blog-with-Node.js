@@ -10,14 +10,7 @@ router.get('/create', blogController.blog_create_get);
 
 router.get('/:id', blogController.blog_details);
 
-router.delete('/:id',(req,res)=>{
-    const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-        .then((result)=>{
-            res.json({redirect:'/blogs'})
-        })
-        .catch((err)=>console.log(err));
-});
+router.delete('/:id', blogController.blog_delete);
 
 /*
 router.get('/single-blog', (req, res) => {
