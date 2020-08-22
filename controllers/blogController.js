@@ -42,10 +42,22 @@ const blog_delete = (req,res)=>{
         .catch((err)=>console.log(err));
 }
 
+const blog_edit = (req,res)=>{
+    const blog = new Blog(req.body);
+    blog.save()
+        .then((result) => {
+            res.redirect('blogs')
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
 module.exports = { 
     blog_index, 
     blog_details, 
     blog_create_get,
     blog_create_post,
-    blog_delete
+    blog_delete,
+    blog_edit
 };

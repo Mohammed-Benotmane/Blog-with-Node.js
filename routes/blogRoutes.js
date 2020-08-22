@@ -12,6 +12,8 @@ router.get('/:id', blogController.blog_details);
 
 router.delete('/:id', blogController.blog_delete);
 
+router.put('/:id',blogController.blog_edit);
+
 /*
 router.get('/single-blog', (req, res) => {
     Blog.findById('5f24f05369f65d2ff073142a')
