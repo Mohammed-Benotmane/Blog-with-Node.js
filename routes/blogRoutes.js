@@ -12,7 +12,7 @@ router.get('/:id', blogController.blog_details);
 
 router.delete('/:id', blogController.blog_delete);
 
-router.put('/edit',blogController.blog_edit);
+router.get('/:id/edit',blogController.blog_edit);
 
 /*
 router.get('/single-blog', (req, res) => {
