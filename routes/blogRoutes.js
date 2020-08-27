@@ -12,7 +12,7 @@ router.get('/:id', blogController.blog_details);
 
 router.delete('/:id', blogController.blog_delete);
 
-router.put('/:id',blogController.blog_edit);
+router.put('/edit',blogController.blog_edit);
 
 /*
 router.get('/single-blog', (req, res) => {
@@ -21,4 +21,5 @@ router.get('/single-blog', (req, res) => {
         .catch((err) => console.log(err));
 })
 */
+
 module.exports = router;

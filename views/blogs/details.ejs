@@ -13,8 +13,8 @@
         <a class="delete" data-doc="<%= blog._id %>">
             <img src="/delete.png" alt="delete icon">
         </a>
-        <a class="edit" data-doc="<%= blog._id %>" href="/edit">
-            <img src="/edit.png" alt="edit icon">
+        <a class="edit" href="/blogs/create">
+            <img src="/edit.png" alt="edit icon" width="40px">
         </a>
     </div>
     <%- include('../partials/footer.ejs') %>
@@ -29,7 +29,9 @@
                 .then((response)=>response.json())
                 .then((data)=>window.location.href = data.redirect)
                 .catch((err)=>console.log(err));
-        })
+        });
+
+        
 
     </script>
 
